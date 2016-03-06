@@ -1,0 +1,36 @@
+<div class="row">
+    <div class="col-md-12">
+        <h1>Todo</h1>
+    </div>
+</div>
+
+<div class="row" ng-controller="todoCtrl">
+    <div class="col-md-12">
+        <div class="row">
+            <div class="col-md-12">
+                <button ng-click="listTodo()" class="btn btn-primary pull-right">
+                    <span class="glyphicon glyphicon-refresh" aria-hidden="true"></span>
+                    Listar
+                </button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <table class="table table-hover table-striped">
+                    <thead>
+                    <tr>
+                        <th>Title</th>
+                        <th>Description</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="todo in todoList">
+                        <td>{{ todo.title }}</td>
+                        <td>{{ todo.description }}</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
