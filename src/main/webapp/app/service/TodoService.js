@@ -8,7 +8,7 @@ function TodoService($http, context) {
     var base_path = context + 'todo';
 
     this.listTodo = function(callback) {
-        $http.get(base_path + '/list')
+        $http.get(base_path)
             .success(function(data, status) {
                 callback(data, status);
             })

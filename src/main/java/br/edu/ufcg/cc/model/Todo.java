@@ -1,9 +1,14 @@
 package br.edu.ufcg.cc.model;
 
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
 /**
  * Created by victor on 05/03/16.
  */
-public class Todo {
+@Entity
+@Table(name = "todos")
+public class Todo extends GenericModel {
 
     private String title;
     private String description;

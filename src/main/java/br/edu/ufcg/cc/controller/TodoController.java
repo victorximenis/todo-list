@@ -1,6 +1,9 @@
 package br.edu.ufcg.cc.controller;
 
 import br.edu.ufcg.cc.model.Todo;
+import br.edu.ufcg.cc.repository.TodoRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -15,16 +18,18 @@ import java.util.List;
 @RequestMapping("/todo")
 public class TodoController {
 
-    @RequestMapping(value = "/list", method = RequestMethod.GET)
+    @Autowired
+    private TodoRepository todoRepository;
+
+    @RequestMapping(method = RequestMethod.GET)
     public List<Todo> list() {
-        ArrayList<Todo> todoList = new ArrayList<Todo>();
-        for (int i = 1; i < 11; i++) {
-            Todo todo = new Todo();
-            todo.setTitle("Todo title " + i);
-            todo.setDescription("Todo description " + i);
-            todoList.add(todo);
-        }
+        List<Todo> todoList = (List<Todo>) todoRepository.findAll();
         return todoList;
+    }
+
+    @RequestMapping(method = RequestMethod.POST)
+    public void save(@RequestBody Todo todo) {
+        todoRepository.save(todo);
     }
 
 }
