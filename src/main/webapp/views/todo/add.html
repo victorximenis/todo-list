@@ -1,0 +1,23 @@
+<div class="row" ng-controller="todoCtrl">
+    <div class="col-md-12">
+        <form class="form form-horizontal" ng-submit="save()">
+            <div class="row">
+                <div class="col-md-4 form-group">
+                    <label>Title</label>
+                    <input ng-model="todo.title" class="form-control" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 form-group">
+                    <label>Description</label>
+                    <textarea class="form-control" rows="3" ng-model="todo.description"></textarea>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 form-group">
+                    <button type="submit" class="btn btn-primary">Salvar</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

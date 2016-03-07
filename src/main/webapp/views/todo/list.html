@@ -8,29 +8,65 @@
     <div class="col-md-12">
         <div class="row">
             <div class="col-md-12">
-                <button ng-click="listTodo()" class="btn btn-primary pull-right">
-                    <span class="glyphicon glyphicon-refresh" aria-hidden="true"></span>
-                    Listar
+                <button ng-click="openModal()" class="btn btn-success">
+                    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                    Adicionar
                 </button>
             </div>
         </div>
         <div class="row">
             <div class="col-md-12">
-                <table class="table table-hover table-striped">
+                <table class="table table-hover table-striped" ng-init="listTodo()">
                     <thead>
                     <tr>
                         <th>Title</th>
                         <th>Description</th>
+                        <th></th>
                     </tr>
                     </thead>
                     <tbody>
                     <tr ng-repeat="todo in todoList">
                         <td>{{ todo.title }}</td>
                         <td>{{ todo.description }}</td>
+                        <td class="text-right">
+                            <button ng-click="delete($index)" class="btn btn-danger btn-xs">Deletar</button>
+                        </td>
                     </tr>
                     </tbody>
                 </table>
             </div>
         </div>
     </div>
+
+    <div id="modal" class="modal fade" tabindex="-1" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">New Todo</h4>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="row">
+                            <div class="col-md-6 form-group">
+                                <label>Title</label>
+                                <input ng-model="todo.title" class="form-control" />
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 form-group">
+                                <label>Description</label>
+                                <textarea class="form-control" rows="3" ng-model="todo.description"></textarea>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+                    <button ng-click="save()" type="button" class="btn btn-primary">Salvar</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+
 </div>
