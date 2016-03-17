@@ -29,7 +29,7 @@ public class TodoController {
         todoRepository.save(todo);
     }
 
-    @RequestMapping(method = RequestMethod.PATCH)
+    @RequestMapping(value = "/update", method = RequestMethod.POST)
     public void update(@RequestBody Todo obj) {
         Todo todo = todoRepository.findOne(obj.getId());
         todo.setTitle(obj.getTitle());

@@ -5,18 +5,34 @@ app.controller('todoCtrl', TodoController);
 
 function TodoController($scope, $state, todoService) {
 
-    $scope.openModal = function() {
+    $scope.newTodoModal = function() {
         $scope.todo = {};
-        $('#modal').modal('toggle');
+        $('#createModal').modal('toggle');
+    }
+
+    $scope.updateTodoModal = function(index) {
+        $scope.todoUpdate = $scope.todoList[index];
+        $('#updateModal').modal('toggle');
     }
 
     $scope.save = function() {
         todoService.save($scope.todo, function(response, status) {
             if (status === 200) {
-                $('#modal').modal('toggle');
+                $('#createModal').modal('toggle');
                 $scope.listTodo();
             } else {
-                console.log("Erro ao salvar Todo");
+                console.log("Erro ao salvar to do");
+            }
+        });
+    }
+
+    $scope.update = function() {
+        todoService.update($scope.todoUpdate, function(response, status) {
+            if (status === 200) {
+                $('#updateModal').modal('toggle');
+                $scope.listTodo();
+            } else {
+                console.log("Erro ao atualizar to do");
             }
         });
     }
@@ -26,7 +42,7 @@ function TodoController($scope, $state, todoService) {
             if (status === 200) {
                 $scope.listTodo();
             } else {
-                console.log("Erro ao deletar todo");
+                console.log("Erro ao deletar to do");
             }
         });
     }
@@ -36,7 +52,7 @@ function TodoController($scope, $state, todoService) {
             if (status === 200) {
                 $scope.todoList = response;
             } else {
-                console.log("Todo list error");
+                console.log("To do list error");
             }
         });
     }

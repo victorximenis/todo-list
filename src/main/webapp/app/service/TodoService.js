@@ -17,6 +17,16 @@ function TodoService($http, context) {
             });
     }
 
+    this.update = function(todo, callback) {
+        $http.post(base_path + '/update', todo)
+            .success(function(data, status) {
+                callback(data, status);
+            })
+            .error(function(data, status) {
+                callback(data, status);
+            });
+    }
+
     this.listTodo = function(callback) {
         $http.get(base_path)
             .success(function(data, status) {

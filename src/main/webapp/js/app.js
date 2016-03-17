@@ -24,10 +24,6 @@ app.config(function($stateProvider, $urlRouterProvider) {
         .state('app.todo-list', {
             url: '/todo',
             templateUrl: '/views/todo/list.html'
-        })
-        .state('app.todo-add', {
-            url: '/todo/add',
-            templateUrl: '/views/todo/add.html'
         });
 
 });
