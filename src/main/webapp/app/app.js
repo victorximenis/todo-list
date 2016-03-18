@@ -4,7 +4,8 @@
 
 var app = angular.module("todoApp", [
     'ui.router',
-    'ngResource'
+    'ngResource',
+    'notification.fx'
 ]);
 
 app.constant('context', "/");
