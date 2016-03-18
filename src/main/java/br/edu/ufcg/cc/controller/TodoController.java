@@ -5,7 +5,6 @@ import br.edu.ufcg.cc.repository.TodoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -35,7 +34,7 @@ public class TodoController {
         todoRepository.save(todo);
     }
 
-    @RequestMapping(method = RequestMethod.PATCH, value = "{id}")
+    @RequestMapping(method = RequestMethod.PUT, value = "{id}")
     public void update(@RequestBody Todo obj, @PathVariable Long id) {
         Todo todo = todoRepository.findOne(id);
         todo.setTitle(obj.getTitle());
