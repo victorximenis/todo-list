@@ -3,7 +3,7 @@
  */
 app.controller('todoCtrl', todoController);
 
-function todoController($scope, Todo, todoService) {
+function todoController($scope, Todo) {
 
     $scope.newTodoModal = function() {
         $scope.newTodo = new Todo();
