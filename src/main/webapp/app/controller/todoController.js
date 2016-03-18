@@ -37,9 +37,9 @@ function todoController($scope, Todo) {
         $scope.entry = Todo.get({id: $scope.todoList[index].id}, function() {
             $scope.entry.$delete(function() {
                 $scope.listTodo();
+            }).catch(function(todo) {
+                console.log(todo.data.error);
             });
-        }).catch(function(todo) {
-            console.log(todo.data.error);
         });
     }
 
