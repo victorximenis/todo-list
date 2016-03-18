@@ -19,6 +19,8 @@ function todoController($scope, Todo) {
         $scope.newTodo.$save(function() {
             $('#createModal').modal('toggle');
             $scope.listTodo();
+        }).catch(function(todo) {
+            console.log(todo.data.error);
         });
     }
 
@@ -26,6 +28,8 @@ function todoController($scope, Todo) {
         $scope.todoUpdate.$update(function() {
             $('#updateModal').modal('toggle');
             $scope.listTodo();
+        }).catch(function(todo) {
+            console.log(todo.data.error);
         });
     }
 
@@ -34,6 +38,8 @@ function todoController($scope, Todo) {
             $scope.entry.$delete(function() {
                 $scope.listTodo();
             });
+        }).catch(function(todo) {
+            console.log(todo.data.error);
         });
     }
 
