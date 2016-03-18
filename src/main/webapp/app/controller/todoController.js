@@ -1,9 +1,9 @@
 /**
  * Created by victor on 05/03/16.
  */
-app.controller('todoCtrl', TodoController);
+app.controller('todoCtrl', todoController);
 
-function TodoController($scope, $state, todoService) {
+function todoController($scope, $state, todoService) {
 
     $scope.newTodoModal = function() {
         $scope.todo = {};

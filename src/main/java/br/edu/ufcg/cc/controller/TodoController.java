@@ -24,29 +24,29 @@ public class TodoController {
         return todoList;
     }
 
+    @RequestMapping(method = RequestMethod.GET, value = "{id}")
+    public Todo get(@PathVariable Long id) {
+        Todo todo = todoRepository.findOne(id);
+        return todo;
+    }
+
     @RequestMapping(method = RequestMethod.POST)
     public void save(@RequestBody Todo todo) {
         todoRepository.save(todo);
     }
 
-    @RequestMapping(value = "/update", method = RequestMethod.POST)
-    public void update(@RequestBody Todo obj) {
-        Todo todo = todoRepository.findOne(obj.getId());
+    @RequestMapping(method = RequestMethod.PATCH, value = "{id}")
+    public void update(@RequestBody Todo obj, @PathVariable Long id) {
+        Todo todo = todoRepository.findOne(id);
         todo.setTitle(obj.getTitle());
         todo.setDescription(obj.getDescription());
 
         todoRepository.save(todo);
     }
 
-    @RequestMapping(value = "/delete", method = RequestMethod.POST)
-    public void delete(@RequestBody Todo obj) {
-        Todo todo = todoRepository.findOne(obj.getId());
-        todoRepository.delete(todo);
-    }
-
-    @RequestMapping(method = RequestMethod.DELETE)
-    public void restDelete(@RequestBody Todo obj) {
-        Todo todo = todoRepository.findOne(obj.getId());
+    @RequestMapping(method = RequestMethod.DELETE, value = "{id}")
+    public void restDelete(@PathVariable Long id) {
+        Todo todo = todoRepository.findOne(id);
         todoRepository.delete(todo);
     }
 

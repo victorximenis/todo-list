@@ -3,7 +3,8 @@
  */
 
 var app = angular.module("todoApp", [
-    'ui.router'
+    'ui.router',
+    'ngResource'
 ]);
 
 app.constant('context', "/");

@@ -1,9 +1,9 @@
 /**
  * Created by victor on 05/03/16.
  */
-app.service('todoService', TodoService);
+app.service('todoService', todoService);
 
-function TodoService($http, context) {
+function todoService($http, context) {
 
     var base_path = context + 'todo';
 
